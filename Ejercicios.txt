@@ -1,0 +1,189 @@
+1. Clasificación de números positivos o negativos:
+for (i in 1:10) {  
+  numero <- as.numeric(readline(paste("ingrese el numero", i, ": ")))  
+ 
+  if (numero > 0) {
+    print(paste(numero, "es positivo"))
+  } else if (numero < 0) {
+    print(paste(numero, "es negativo"))
+  } else {
+    print(paste(numero, "es cero"))
+  }
+}
+
+
+
+2. Cálculo de números pares e impares:
+numeros <- sample(1:1000, 100, replace = TRUE)
+
+pares <- 0
+impares <- 0
+
+for (num in numeros) {
+  if (num %% 2 == 0) {
+    pares <- pares + 1
+  } else {
+    impares <- impares + 1
+  }
+}
+cat("Lista de numeros generados:", numeros, "\n\n")
+cat("Cantidad de numeros pares:", pares, "\n")
+cat("Cantidad de numeros impares:", impares, "\n")
+
+
+3. Suma de los primeros N números:
+n <- as.integer(readline(prompt = "ingrese nimero: "))
+sum <- 0
+for (i in 1:n) {
+  sum <- sum + i
+}
+cat("la suma de numeros", n, "es:", sum)
+
+
+4. Número de Fibonacci:
+a <- 0
+b <- 1
+
+fibonacci <- c(a, b)
+
+count <- 2
+
+while (count < 20) {  
+  next_num <- a + b  
+  fibonacci <- c(fibonacci, next_num)  
+  a <- b
+  b <- next_num    
+  count <- count + 1
+}
+cat("Los primeros 20 numeros de la secuencia de Fibonacci son:\n")
+print(fibonacci)
+
+cat("\nSecuencia en una línea:\n")
+cat(fibonacci, sep = ", ")
+
+
+5. Cálculo de factorial:
+num <- as.integer(readline(prompt = "ingresa un numero: "))
+fact <- 1
+for (i in 1:num) {
+  fact <- fact * i
+}
+cat("El factorial de", num, "es:", fact, "\n")
+
+
+6. Juego de adivinanza:
+numero_secreto <- sample(1:100, 1)
+
+intentos <- 0
+adivinado <- FALSE
+
+cat("elegi un número entre 1 y 100")
+
+while (!adivinado) {  
+  intento_str <- readline("ingresa tu intento: ")
+  intento <- as.integer(intento_str)  
+  
+  intentos <- intentos + 1  
+ 
+  if (intento == numero_secreto) {
+    adivinado <- TRUE
+    cat("¡Has adivinado el número!\n")
+    cat("El numero secreto era:", numero_secreto, "\n")
+    cat("Lo lograste en", intentos, "intentos.\n")
+  } else if (intento < numero_secreto) {
+    cat("el numero secreto es mayor")
+  } else {
+    cat("el numero secreto es menor")
+  }
+}
+
+
+7. Validación de contraseña:
+contrasena_correcta <- "12345"
+
+intentos <- 0
+autenticado <- FALSE
+
+while (intentos < 3 && !autenticado) {
+ 
+  contrasena_ingresada <- readline("ingrese la contraseña: ")
+  
+  intentos <- intentos + 1  
+  
+  if (contrasena_ingresada == contrasena_correcta) {
+    autenticado <- TRUE
+    cat("bienvenido n")
+  } else {
+    intentos_restantes <- 3 - intentos
+    if (intentos_restantes > 0) {
+      cat("Contraseña incorrecta. te quedan", intentos_restantes, "intentos\n")
+    } else {
+      cat("Contraseña incorrecta. no te quedan mas intentos.\n")
+    }
+  }
+}
+
+# Verificar el resultado final
+if (!autenticado) {
+  cat("has excedido el número máximo de intentos.\n")  
+}
+
+
+8. Suma de digitos de un número:
+numero_str <- readline("ingrese un numero entero: ")
+numero <- as.integer(numero_str)
+
+if (is.na(numero)) {
+  cat("ingrese un número entero valido.\n")
+} else {  
+  numero_abs <- abs(numero)  
+  suma <- 0  
+ 
+  while (numero_abs > 0) {    
+    digito <- numero_abs %% 10    
+    suma <- suma + digito    
+    
+    numero_abs <- numero_abs %/% 10
+  }  
+  cat("la suma de los digitos de", numero, "es:", suma, "\n")
+  
+  
+  cat("Proceso: ")
+  numero_abs <- abs(numero)
+  while (numero_abs > 0) {
+    digito <- numero_abs %% 10
+    cat(digito)
+    numero_abs <- numero_abs %/% 10
+    if (numero_abs > 0) {
+      cat(" + ")
+    }
+  }
+  cat(" =", suma, "\n")
+}
+
+
+9. Impresión de patrones:
+num_filas <- 4
+
+for (i in 2:(num_filas + 1)) {  
+  linea <- rep("*", i)    
+  linea_str <- paste(linea, collapse = "")   
+  cat(linea_str, "\n")
+}
+
+
+10. Números primos:
+for (n in 2:100) {
+  es_primo <- TRUE 
+  
+  for (i in 2:(n - 1)) {
+    if (n %% i == 0) {
+      es_primo <- FALSE  
+      break  
+    }
+  }
+ 
+  if (es_primo) {
+    print(n) 
+  }
+}
